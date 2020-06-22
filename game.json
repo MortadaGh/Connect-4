@@ -100,7 +100,17 @@
     "currentPlatform": "GDevelop JS platform"
   },
   "resources": {
-    "resources": [],
+    "resources": [
+      {
+        "alwaysLoaded": false,
+        "file": "Connect4 Assets/cpex_background.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Connect4 Assets\\cpex_background.png",
+        "smoothed": true,
+        "userAdded": true
+      }
+    ],
     "resourceFolders": []
   },
   "objects": [],
@@ -131,7 +141,7 @@
         "gridWidth": 32,
         "snap": true,
         "windowMask": false,
-        "zoomFactor": 0.616
+        "zoomFactor": 0.712
       },
       "objectsGroups": [],
       "variables": [],
@@ -144,8 +154,23 @@
           "locked": false,
           "name": "HelloWorldText",
           "width": 0,
-          "x": 350,
-          "y": 250,
+          "x": 280,
+          "y": 260,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "height": 601,
+          "layer": "",
+          "locked": false,
+          "name": "BackgroundPicture",
+          "width": 800,
+          "x": 0,
+          "y": 0,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -154,7 +179,7 @@
       ],
       "objects": [
         {
-          "bold": false,
+          "bold": true,
           "italic": false,
           "name": "HelloWorldText",
           "smoothed": true,
@@ -165,12 +190,51 @@
           "behaviors": [],
           "string": "Hello World!",
           "font": "",
-          "characterSize": 20,
+          "characterSize": 40,
           "color": {
-            "b": 0,
-            "g": 0,
-            "r": 0
+            "b": 255,
+            "g": 255,
+            "r": 255
           }
+        },
+        {
+          "name": "BackgroundPicture",
+          "tags": "",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Connect4 Assets\\cpex_background.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "events": [],
