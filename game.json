@@ -233,15 +233,30 @@
         },
         {
           "angle": 0,
-          "customSize": true,
-          "height": 45,
+          "customSize": false,
+          "height": 0,
           "layer": "",
           "locked": false,
           "name": "Button1",
-          "width": 49,
+          "width": 0,
           "x": 118,
           "y": 83,
-          "zOrder": 2,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "layer": "",
+          "locked": false,
+          "name": "test2",
+          "width": 0,
+          "x": 332,
+          "y": 62,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -293,20 +308,7 @@
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
-          "behaviors": [
-            {
-              "name": "TopDownMovement",
-              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
-              "acceleration": 400,
-              "allowDiagonals": true,
-              "angleOffset": 0,
-              "angularMaxSpeed": 180,
-              "deceleration": 800,
-              "ignoreDefaultControls": false,
-              "maxSpeed": 200,
-              "rotateObject": true
-            }
-          ],
+          "behaviors": [],
           "animations": [
             {
               "name": "",
@@ -345,20 +347,7 @@
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
-          "behaviors": [
-            {
-              "name": "TopDownMovement",
-              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
-              "acceleration": 400,
-              "allowDiagonals": true,
-              "angleOffset": 0,
-              "angularMaxSpeed": 180,
-              "deceleration": 800,
-              "ignoreDefaultControls": false,
-              "maxSpeed": 200,
-              "rotateObject": true
-            }
-          ],
+          "behaviors": [],
           "animations": [
             {
               "name": "",
@@ -429,78 +418,40 @@
               ]
             }
           ]
+        },
+        {
+          "bold": false,
+          "italic": false,
+          "name": "test2",
+          "smoothed": true,
+          "tags": "",
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "behaviors": [],
+          "string": "Text",
+          "font": "",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          }
         }
       ],
       "events": [
         {
           "disabled": false,
-          "folded": true,
+          "folded": false,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
               "type": {
                 "inverted": false,
-                "value": "SourisX"
+                "value": "DepartScene"
               },
               "parameters": [
-                "",
-                ">",
-                "100",
-                "",
                 ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisX"
-              },
-              "parameters": [
-                "",
-                "<",
-                "165",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisY"
-              },
-              "parameters": [
-                "",
-                ">",
-                "75",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisY"
-              },
-              "parameters": [
-                "",
-                "<",
-                "500",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "BehaviorActivated"
-              },
-              "parameters": [
-                "Button1",
-                "TopDownMovement"
               ],
               "subInstructions": []
             }
@@ -509,16 +460,97 @@
             {
               "type": {
                 "inverted": false,
-                "value": "MettreX"
+                "value": "ModVarScene"
               },
               "parameters": [
-                "Button1",
+                "X",
                 "=",
-                "118"
+                "0"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "Y",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "tour1",
+                "=",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "tour2",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "ModVarScene"
+              },
+              "parameters": [
+                "column",
+                "=",
+                "0"
               ],
               "subInstructions": []
             }
           ],
+          "events": []
+        },
+        {
+          "disabled": false,
+          "folded": false,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarScene"
+              },
+              "parameters": [
+                "tour1",
+                "=",
+                "1"
+              ],
+              "subInstructions": []
+            },
+            {
+              "type": {
+                "inverted": false,
+                "value": "VarScene"
+              },
+              "parameters": [
+                "tour2",
+                "=",
+                "0"
+              ],
+              "subInstructions": []
+            }
+          ],
+          "actions": [],
           "events": [
             {
               "disabled": false,
@@ -528,11 +560,188 @@
                 {
                   "type": {
                     "inverted": false,
-                    "value": "SourisBouton"
+                    "value": "SourisX"
                   },
                   "parameters": [
                     "",
-                    "Left"
+                    ">",
+                    "100",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisX"
+                  },
+                  "parameters": [
+                    "",
+                    "<",
+                    "165",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisY"
+                  },
+                  "parameters": [
+                    "",
+                    ">",
+                    "75",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisY"
+                  },
+                  "parameters": [
+                    "",
+                    "<",
+                    "500",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "Button1",
+                    "=",
+                    "118"
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "Button1",
+                    "=",
+                    "83"
+                  ],
+                  "subInstructions": []
+                }
+              ],
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SourisBouton"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": [],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "column",
+                        "=",
+                        "1"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
+            },
+            {
+              "disabled": false,
+              "folded": false,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisX"
+                  },
+                  "parameters": [
+                    "",
+                    ">",
+                    "165",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisX"
+                  },
+                  "parameters": [
+                    "",
+                    "<",
+                    "230",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisY"
+                  },
+                  "parameters": [
+                    "",
+                    ">",
+                    "75",
+                    "",
+                    ""
+                  ],
+                  "subInstructions": []
+                },
+                {
+                  "type": {
+                    "inverted": false,
+                    "value": "SourisY"
+                  },
+                  "parameters": [
+                    "",
+                    "<",
+                    "500",
+                    "",
+                    ""
                   ],
                   "subInstructions": []
                 }
@@ -546,237 +755,76 @@
                   "parameters": [
                     "Button1",
                     "=",
-                    "454"
+                    "83"
                   ],
                   "subInstructions": []
                 },
                 {
                   "type": {
                     "inverted": false,
-                    "value": "ActivateBehavior"
+                    "value": "MettreX"
                   },
                   "parameters": [
                     "Button1",
-                    "TopDownMovement",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Button2",
-                    "118",
-                    "83",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeWidth"
-                  },
-                  "parameters": [
-                    "Button2",
                     "=",
-                    "49"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeHeight"
-                  },
-                  "parameters": [
-                    "Button2",
-                    "=",
-                    "45"
+                    "181"
                   ],
                   "subInstructions": []
                 }
               ],
-              "events": []
+              "events": [
+                {
+                  "disabled": false,
+                  "folded": false,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "SourisBouton"
+                      },
+                      "parameters": [
+                        "",
+                        "Left"
+                      ],
+                      "subInstructions": []
+                    },
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": [],
+                      "subInstructions": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "inverted": false,
+                        "value": "ModVarScene"
+                      },
+                      "parameters": [
+                        "column",
+                        "=",
+                        "2"
+                      ],
+                      "subInstructions": []
+                    }
+                  ],
+                  "events": []
+                }
+              ]
             }
           ]
         },
         {
           "disabled": false,
-          "folded": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisX"
-              },
-              "parameters": [
-                "",
-                ">",
-                "165",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisX"
-              },
-              "parameters": [
-                "",
-                "<",
-                "230",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisY"
-              },
-              "parameters": [
-                "",
-                ">",
-                "75",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "SourisY"
-              },
-              "parameters": [
-                "",
-                "<",
-                "500",
-                "",
-                ""
-              ],
-              "subInstructions": []
-            },
-            {
-              "type": {
-                "inverted": false,
-                "value": "BehaviorActivated"
-              },
-              "parameters": [
-                "Button1",
-                "TopDownMovement"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "inverted": false,
-                "value": "MettreX"
-              },
-              "parameters": [
-                "Button1",
-                "=",
-                "181"
-              ],
-              "subInstructions": []
-            }
-          ],
-          "events": [
-            {
-              "disabled": false,
-              "folded": false,
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "SourisBouton"
-                  },
-                  "parameters": [
-                    "",
-                    "Left"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "MettreY"
-                  },
-                  "parameters": [
-                    "Button1",
-                    "=",
-                    "454"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ActivateBehavior"
-                  },
-                  "parameters": [
-                    "Button1",
-                    "TopDownMovement",
-                    "no"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Button2",
-                    "118",
-                    "83",
-                    ""
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeWidth"
-                  },
-                  "parameters": [
-                    "Button2",
-                    "=",
-                    "49"
-                  ],
-                  "subInstructions": []
-                },
-                {
-                  "type": {
-                    "inverted": false,
-                    "value": "ChangeHeight"
-                  },
-                  "parameters": [
-                    "Button2",
-                    "=",
-                    "45"
-                  ],
-                  "subInstructions": []
-                }
-              ],
-              "events": []
-            }
-          ]
+          "folded": false,
+          "type": "BuiltinCommonInstructions::JsCode",
+          "inlineCode": "runtimeScene.setBackgroundColor(100,100,240);\n\n//array of column 1 with X=118 that contains the different Y's\nvar col1_X118=[\"454\",\"393\",\"333\"];\n//array of column 2 with X=181 that contains the different Y's\nvar col2_X181=[\"454\",\"393\",\"333\"];\n\nvar X=runtimeScene.getVariables().get(\"X\");\nvar Y=runtimeScene.getVariables().get(\"Y\");\nvar Tour1=runtimeScene.getVariables().get(\"tour1\");\nvar Tour2=runtimeScene.getVariables().get(\"tour2\");\nvar Col=runtimeScene.getVariables().get(\"column\");\n\nvar col=Col.getAsNumber();\nvar x=Tour1.getAsNumber();\nvar y=Tour2.getAsNumber();\n\nif(x==1 && y==0){\n    //player tour\n    const button1=runtimeScene.getObjects(\"Button1\");\n    switch(col){\n        case 1: //Column 1\n                for(var i=0;i<col1_X118.length;i++){\n                    if(col1_X118[i]!=0)\n                    {   //It's an empty case, so put the button into this case\n                        X.setNumber(118);\n                        Y.setNumber(col1_X118[i]);    \n                        button1[0].setX(118);\n                        button1[0].setY(454); //problem!! lezm 7ot col1_X118[i] bs ma 3m tzbat\n                        col1_X118[i]=0;\n                        Tour1.setNumber(0);\n                        Tour2.setNumber(1);\n                        break;\n                    }\n                }\n                break;\n\n        case 2: //Column 2\n                for(var i=0;i<col2_X181.length;i++){\n                    if(col2_X181[i]!=0)\n                    {   //It's an empty case, so put the button into this case\n                        X.setNumber(181);\n                        Y.setNumber(col2_X181[i]);    \n                        button1[0].setX(181);\n                        button1[0].setY(454);\n                        col2_X181[i]=0;\n                        Tour1.setNumber(0);\n                        Tour2.setNumber(1);\n                        break;\n                    }\n                }\n                break;\n                \n        default: break;\n    }\n}\nvar x=Tour1.getAsNumber();\nvar y=Tour2.getAsNumber();\n\nif(x==0 && y==1){\n    //computer tour\n    const button2=runtimeScene.createObject(\"Button2\");\n    button2.setX(118);\n    button2.setY(83);\n    //computer tour: \n    var random_array1=[]; //random empty circles from column1\n    var random_array2=[]; //random empty circles from column2 \n    var i=0;\n    for(i=0;i<col1_X118.length;i++){\n        if(col1_X118[i]!=0){\n            random_array1.push(col1_X118[i]); //get the first empty circle at column1\n            break;\n        } \n    }\n    for(i=0;i<col2_X181.length;i++){\n        if(col2_X181[i]!=0){\n            random_array2.push(col2_X181[i]); //get the first empty circle at column2\n            break;\n        } \n    }\n    //The same work for other columns...\n\n    var randX=Math.floor((Math.random() * 2) + 1);\n    if(randX==1){  //I choose the first column with X=118 \n        const randY = random_array1[Math.floor(Math.random() * random_array1.length)];\n        X.setNumber(118);\n        Y.setNumber(randY);\n        button2.setX(118);\n        button2.setY(Number(randY));\n        for(var i=0;i<col1_X118.length;i++){\n            if(col1_X118[i]==randY) {\n                col1_X118[i]=0;\n                break;\n            }\n        }\n    }\n    else if(randX==2){ //I choose the first column with X=181 \n        const randY = random_array2[Math.floor(Math.random() * random_array2.length)];\n        X.setNumber(181);\n        Y.setNumber(randY);\n        button2.setX(181);\n        button2.setY(Number(randY));\n        for(var i=0;i<col2_X181.length;i++){\n            if(col2_X181[i]==randY) {\n                col2_X181[i]=0;\n                break;\n            }\n        }\n    }\n\n    const button1=runtimeScene.createObject(\"Button1\");\n    button1.setX(118);\n    button1.setY(83);\n    /*Tour1.setNumber(1);  //This does not work...\n    Tour2.setNumber(0);*/\n    \n}",
+          "parameterObjects": "",
+          "useStrict": true
         },
         {
           "disabled": false,
@@ -806,12 +854,7 @@
           "effects": []
         }
       ],
-      "behaviorsSharedData": [
-        {
-          "name": "TopDownMovement",
-          "type": "TopDownMovementBehavior::TopDownMovementBehavior"
-        }
-      ]
+      "behaviorsSharedData": []
     },
     {
       "b": 197,
