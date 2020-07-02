@@ -21,7 +21,9 @@ public class GameController : MonoBehaviour
 
 	public int[] r;
 
-	private AI ai;
+	//private AI ai;
+
+	private Board currentBoard;
 
 	public void Start()
 	{
@@ -38,13 +40,16 @@ public class GameController : MonoBehaviour
 		won = false;
 		draw = false;
 
-		ai = new AI(5);
+		//TODO randomly select who takes the first turn
+		currentBoard = new Board(Piece.BLUE);
+		//ai = new AI(5);
 	}
 
 	public void dropPiece(int col)
 	{
 		if (!won && !draw)
 		{
+			currentBoard.play(col);
 			int a = r[col]--;
 			if(a < 0)
 			{
