@@ -1,5 +1,5 @@
 
-=== Wed Jun 24 23:39:45 2020
+=== Wed Jul  1 21:16:15 2020
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -43,3 +43,7 @@ The following packages were added:
   com.unity.textmeshpro@2.0.1
   com.unity.timeline@1.2.14
   com.unity.ugui@1.0.0
+The following packages were updated:
+  com.unity.2d.animation from version 3.1.1 to 3.2.2
+  com.unity.2d.psdimporter from version 2.1.0 to 2.1.4
+  com.unity.2d.spriteshape from version 3.0.8 to 3.0.11
