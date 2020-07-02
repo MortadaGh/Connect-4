@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
 	public int[] r;
 
-	//private AI ai;
+	private AI ai;
 
 	private Board currentBoard;
 
@@ -36,13 +36,35 @@ public class GameController : MonoBehaviour
 		c.Add(c6);
 		c.Add(c7);
 
-		isPlayerTurn = true;
 		won = false;
 		draw = false;
 
-		//TODO randomly select who takes the first turn
 		currentBoard = new Board(Piece.BLUE);
-		//ai = new AI(5);
+
+		//TODO increase depth depending on Difficulty
+		int depth = 5;
+		Node root = new Node(currentBoard, 0, depth);
+
+		//TODO randomly select who takes the first turn
+		isPlayerTurn = true;
+
+		ai = new AI(depth, root);
+		if (!isPlayerTurn)
+		{
+			aiMove();
+		}
+	}
+
+	private void aiMove()
+	{
+		int ai_move;
+		int a;
+		do
+		{
+			ai_move = ai.getDecision();
+			a = r[ai_move] - 1;
+		} while (a < 0);
+		dropPiece(ai_move);
 	}
 
 	public void dropPiece(int col)
@@ -72,7 +94,12 @@ public class GameController : MonoBehaviour
 				Debug.Log("Draw!");
 			}
 
-			isPlayerTurn = !isPlayerTurn;			
+			isPlayerTurn = !isPlayerTurn;
+
+			if (!isPlayerTurn)
+			{
+				aiMove();
+			}
 		}
 	}
 	

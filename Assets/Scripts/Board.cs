@@ -156,6 +156,26 @@ public class Board
 		clone.draw = draw;
 		return clone;
 	}
+
+	public int calculateScore()
+	{
+		int score = 0;
+
+		//TODO
+		System.Random r = new System.Random();
+		score += r.Next() % 100;
+		score -= r.Next() % 50;
+
+		//Horizontal
+		//check for win +1000
+		//check for loss -700
+		//check for PPPE or EPPP +50
+
+		//check for PPEP or PEPP +40
+		//check for PPEE or EEPP +10
+		//check for PEPE or EPEP +7
+		return score;
+	}
 }
 
 public enum Piece

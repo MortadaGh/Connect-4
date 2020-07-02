@@ -9,10 +9,19 @@ namespace Assets.Scripts
 	class AI
 	{
 		private int depth;
+		private Node root;
 
-		public AI(int depth)
+		public AI(int depth, Node root)
 		{
 			this.depth = depth;
+			this.root = root;
+		}
+
+		public int getDecision()
+		{
+			//TODO use Minimax
+			Random r = new Random();
+			return r.Next() % 7;
 		}
 	}
 }
