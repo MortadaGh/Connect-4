@@ -19,7 +19,10 @@ public class Node
 		type = level == maxdepth? NodeType.Terminal : level % 2 == 0 ? NodeType.Max : NodeType.Min;
 	}
 
+	public void constructDecisionTree()
+	{
 
+	}
 }
 
 public enum NodeType
