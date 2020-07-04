@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Board
 {
-	private Piece[,] pieces;
+	private Piece[,] pieces;  //2 dimensions array
 	public int[] r;
 	private Piece turn;
 
@@ -47,5 +47,5 @@ public class Board
 
 public enum Piece
 {
-	EMPTY, BLUE, YELLOW
+	EMPTY, RED, YELLOW
 }
