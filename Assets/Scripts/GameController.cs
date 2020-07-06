@@ -21,9 +21,11 @@ public class GameController : MonoBehaviour
 
 	public int[] r;
 
-	private AI ai;
-
 	private Board currentBoard;
+
+	private Node root;
+	private AI ai;
+	private int depth;
 
 	public void Start()
 	{
@@ -42,13 +44,14 @@ public class GameController : MonoBehaviour
 		currentBoard = new Board(Piece.BLUE);
 
 		//TODO increase depth depending on Difficulty
-		int depth = 5;
-		Node root = new Node(currentBoard, 0, depth);
+		depth = 2;
+
+		//root = new Node(currentBoard.clone(), 0);
+		//ai = new AI(depth, root);
 
 		//TODO randomly select who takes the first turn
 		isPlayerTurn = true;
 
-		ai = new AI(depth, root);
 		if (!isPlayerTurn)
 		{
 			aiMove();
@@ -57,13 +60,19 @@ public class GameController : MonoBehaviour
 
 	private void aiMove()
 	{
+		root = new Node(currentBoard.clone(), 0);
+		/////Debug.Log($"Root: {root}");
+
+		ai = new AI(depth, root);
+
 		int ai_move;
-		int a;
-		do
-		{
-			ai_move = ai.getDecision();
-			a = r[ai_move] - 1;
-		} while (a < 0);
+		//int a;
+		//do
+		//{
+		ai_move = ai.getDecision();
+		///Debug.Log($"AI Move: {ai_move}");
+			//a = r[ai_move] - 1;
+		//} while (a < 0);
 		dropPiece(ai_move);
 	}
 
@@ -75,7 +84,7 @@ public class GameController : MonoBehaviour
 			int a = r[col]--;
 			if(a < 0)
 			{
-				Debug.Log($"column {col} is full!");
+				///Debug.Log($"column {col} is full!");
 				return;
 			}
 			GameObject p = c[col][a];
@@ -85,13 +94,13 @@ public class GameController : MonoBehaviour
 			won = checkWin(a, col);
 			if (won)
 			{
-				Debug.Log(isPlayerTurn ? "Blue Won!" : "Yellow Won!");
+				///Debug.Log(isPlayerTurn ? "Blue Won!" : "Yellow Won!");
 			}
 
 			draw = checkDraw();
 			if (draw && !won)
 			{
-				Debug.Log("Draw!");
+				///Debug.Log("Draw!");
 			}
 
 			isPlayerTurn = !isPlayerTurn;
@@ -105,13 +114,13 @@ public class GameController : MonoBehaviour
 	
 	public bool checkWin(int i, int j)
 	{
-		//Debug.Log($"i = {i} / j = {j}");
+		/////Debug.Log($"i = {i} / j = {j}");
 		Color color = isPlayerTurn ? Color.blue : Color.yellow;
 
 		//Vertical
 		for(int k=0; k < 3; k++)
 		{
-			//Debug.Log($"k = {k}");
+			/////Debug.Log($"k = {k}");
 			Image p1 = c[j][k].GetComponent<Image>();
 			Image p2 = c[j][k+1].GetComponent<Image>();
 			Image p3 = c[j][k+2].GetComponent<Image>();
@@ -128,7 +137,7 @@ public class GameController : MonoBehaviour
 		//Horizontal
 		for (int k = 0; k < 4; k++)
 		{
-			//Debug.Log($"k = {k}");
+			/////Debug.Log($"k = {k}");
 			Image p1 = c[k][i].GetComponent<Image>();
 			Image p2 = c[k + 1][i].GetComponent<Image>();
 			Image p3 = c[k + 2][i].GetComponent<Image>();
@@ -159,5 +168,10 @@ public class GameController : MonoBehaviour
 			}
 		}
 		return true;
+	}
+
+	public static void log(String m)
+	{
+		/////Debug.Log($"{m}");
 	}
 }
