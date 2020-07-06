@@ -21,7 +21,11 @@ public class GameController : MonoBehaviour
 
 	public int[] r;
 
+	private Board currentBoard;
+
+	private Node root;
 	private AI ai;
+	private int depth;
 
 	public void Start()
 	{
@@ -33,22 +37,53 @@ public class GameController : MonoBehaviour
 		c.Add(c5);
 		c.Add(c6);
 		c.Add(c7);
-		isPlayerTurn = true;
 		won = false;
 		draw = false;
 
-		ai = new AI(5);
+		currentBoard = new Board(Piece.RED);
+
+		//TODO increase depth depending on Difficulty
+		depth = 2;
+
+		//root = new Node(currentBoard.clone(), 0);
+		//ai = new AI(depth, root);
+
+		//TODO randomly select who takes the first turn
+		isPlayerTurn = true;
+
+		if (!isPlayerTurn)
+		{
+			aiMove();
+		}
+	}
+
+	private void aiMove()
+	{
+		root = new Node(currentBoard.clone(), 0);
+		/////Debug.Log($"Root: {root}");
+
+		ai = new AI(depth, root);
+
+		int ai_move;
+		//int a;
+		//do
+		//{
+		ai_move = ai.getDecision();
+		///Debug.Log($"AI Move: {ai_move}");
+			//a = r[ai_move] - 1;
+		//} while (a < 0);
+		dropPiece(ai_move);
 	}
 
 	public void dropPiece(int col) //drop the piece in column col ?! 
 	{
 		if (!won && !draw)
 		{
-			int a = r[col]--; //r[0]=5, r[0]--=4, a=4
-							  //Debug.Log($"r[col]={r[col]}, col={col} , a={a}"); // col 0 , a 5 (first col and row)..
-			if (a < 0)
+			currentBoard.play(col);
+			int a = r[col]--;
+			if(a < 0)
 			{
-				Debug.Log($"column {col} is full!");
+				///Debug.Log($"column {col} is full!");
 				return;
 			}
 			GameObject p = c[col][a];
@@ -67,10 +102,15 @@ public class GameController : MonoBehaviour
 			draw = checkDraw();
 			if (draw && !won)
 			{
-				Debug.Log("Draw!");
+				///Debug.Log("Draw!");
 			}
 
-			isPlayerTurn = !isPlayerTurn;   //Change the turn		
+			isPlayerTurn = !isPlayerTurn;
+
+			if (!isPlayerTurn)
+			{
+				aiMove();
+			}
 		}
 	}
 
@@ -197,5 +237,10 @@ public class GameController : MonoBehaviour
 			}
 		}
 		return true;
+	}
+
+	public static void log(String m)
+	{
+		/////Debug.Log($"{m}");
 	}
 }
