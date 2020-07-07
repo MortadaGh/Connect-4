@@ -19,6 +19,20 @@ namespace Assets.Scripts
 
 		public int getDecision()
 		{
+			if (depth == 0)
+			{
+				List<int> decisions = new List<int>();
+				for(int i=0; i<7; i++){
+					if(root.board.r[i] >= 0){
+						decisions.Add(i);
+					}
+				}
+				Random r = new Random();
+				int d = r.Next();
+				//int d2 = GetHashCode();
+				GameController.log($"decisions.Count = {decisions.Count}");
+				return decisions[d % decisions.Count];
+			}
 			return root.constructTree(depth);
 			//int score = root.constructTree(depth);
 			
@@ -37,8 +51,7 @@ namespace Assets.Scripts
 			}*/
 			
 			//return root.decision;
-			//Random r = new Random();
-			//return r.Next() % 7;
+			
 		}
 		/*
 		public int minimax(Node node, int depth, bool isMaximizingPlayer, int alpha, int beta)

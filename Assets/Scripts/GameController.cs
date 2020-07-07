@@ -64,14 +64,8 @@ public class GameController : MonoBehaviour
 
 		ai = new AI(depth, root);
 
-		int ai_move;
-		//int a;
-		//do
-		//{
-		ai_move = ai.getDecision();
-		///Debug.Log($"AI Move: {ai_move}");
-			//a = r[ai_move] - 1;
-		//} while (a < 0);
+		int ai_move = ai.getDecision();
+		
 		dropPiece(ai_move);
 	}
 
@@ -102,7 +96,7 @@ public class GameController : MonoBehaviour
 			draw = checkDraw();
 			if (draw && !won)
 			{
-				///Debug.Log("Draw!");
+				Debug.Log("Draw!");
 			}
 
 			isPlayerTurn = !isPlayerTurn;
@@ -170,7 +164,7 @@ public class GameController : MonoBehaviour
 		else if (x == 4) y = 2;
 		else if (x == 7) { y = 3; x = 6; t = 1; }
 		else if (x == 5 || x == 6) y = 3;
-		else { Debug.Log($"No Diagonal"); checkWinOblique2(i, j); }
+		else {  checkWinOblique2(i, j); }
 
 		for (k = t; k < y; k++)
 		{
@@ -205,7 +199,7 @@ public class GameController : MonoBehaviour
 		else if (x == 0) y = 3;
 		else if (x == -1) { y = 3; x = 0; t = 1; }
 		else if (x == -2) { y = 3; x = 0; t = 2; }
-		else { Debug.Log($"No Diagonal"); return false; }
+		else {  return false; }
 
 		for (k = t; k < y; k++)
 		{
@@ -241,6 +235,6 @@ public class GameController : MonoBehaviour
 
 	public static void log(String m)
 	{
-		/////Debug.Log($"{m}");
+		Debug.Log($"{m}");
 	}
 }
