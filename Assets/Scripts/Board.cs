@@ -92,8 +92,8 @@ public class Board
 
 	public bool checkWin(int i, int j)
 	{
-		/////Debug.Log($"i = {i} / j = {j}");
-		//Color color = isPlayerTurn ? Color.blue : Color.yellow;
+        /////Debug.Log($"i = {i} / j = {j}");
+        //Color color = isPlayerTurn ? Color.blue : Color.yellow;
 
 		//Vertical
 		for (int k = 0; k < 3; k++)
@@ -103,10 +103,7 @@ public class Board
 			Piece p2 = pieces[i,k + 1];
 			Piece p3 = pieces[i,k + 2];
 			Piece p4 = pieces[i,k + 3];
-			if (p1 == turn
-				&& p2 == turn
-				&& p3 == turn
-				&& p4 == turn)
+			if (p1 == turn && p2 == turn && p3 == turn && p4 == turn)
 			{
 				return true;
 			}
@@ -120,23 +117,79 @@ public class Board
 			Piece p2 = pieces[k + 1,j];
 			Piece p3 = pieces[k + 2,j];
 			Piece p4 = pieces[k + 3,j];
-			if (p1 == turn
-				&& p2 == turn
-				&& p3 == turn
-				&& p4 == turn)
+			if (p1 == turn && p2 == turn && p3 == turn && p4 == turn)
 			{
 				return true;
 			}
 		}
-
-		//Oblique 1
-
-		//Oblique 2
-
-		return false;
+        return false;
 	}
 
-	private bool checkDraw()
+    public bool checkWinOblique1(int i, int j)
+    {
+        int x = 0, y = 0, t = 0;
+        //Oblique 1
+        x = i + j;
+
+        if (x == 3) y = 1;
+        else if (x == 8) { y = 3; x = 6; t = 2; }
+        else if (x == 4) y = 2;
+        else if (x == 7) { y = 3; x = 6; t = 1; }
+        else if (x == 5 || x == 6) y = 3;
+        else
+        {
+            Debug.Log($"No Diagonal");
+            //checkWinOblique2(i, j);
+        }
+
+        for (int k = t; k < y; k++)
+        {
+            //Debug.Log($"i={i},j={j},k={k},y={y}");
+            Piece p1 = pieces[x, k];
+            Piece p2 = pieces[x - 1, k + 1];
+            Piece p3 = pieces[x - 2, k + 2];
+            Piece p4 = pieces[x - 3, k + 3];
+            if (p1 == turn
+                && p2 == turn
+                && p3 == turn
+                && p4 == turn)
+            {
+                return true;
+            }
+            x--;
+        }
+        return false;
+    }
+
+    public bool checkWinOblique2(int i, int j)
+    {
+        //Oblique 2
+        int x = 0, y = 0, t = 0;
+        x = j - i;
+
+        if (x == 3) y = 1;
+        else if (x == 2) y = 2;
+        else if (x == 1) y = 3;
+        else if (x == 0) y = 3;
+        else if (x == -1) { y = 3; x = 0; t = 1; }
+        else if (x == -2) { y = 3; x = 0; t = 2; }
+        else { Debug.Log($"No Diagonal"); return false; }
+
+        for (int k = t; k < y; k++)
+        {
+            Piece p1 = pieces[x, k];
+            Piece p2 = pieces[x + 1, k + 1];
+            Piece p3 = pieces[x + 2, k + 2];
+            Piece p4 = pieces[x + 3, k + 3];
+            if (p1 == turn && p2 == turn && p3 == turn && p4 == turn)
+            {
+                return true;
+            }
+            x++;
+        }
+        return false;
+    }
+    private bool checkDraw()
 	{
 		for (int i = 0; i < r.Length; i++)
 		{
@@ -175,9 +228,8 @@ public class Board
 
 	public bool checkWin(Piece turn)
 	{
-		/////Debug.Log($"i = {i} / j = {j}");
-		//Color color = isPlayerTurn ? Color.blue : Color.yellow;
-
+        /////Debug.Log($"i = {i} / j = {j}");
+        //Color color = isPlayerTurn ? Color.blue : Color.yellow;
 		//Vertical
 		for(int j = 0; j < 7; j++)
 		{
@@ -217,16 +269,90 @@ public class Board
 				}
 			}
 		}
+        
+        //Oblique 2
 
-		//Oblique 1
-
-		//Oblique 2
-
-		return false;
+        return false;
 	}
 
-	//TODO
-	public int calculateScore(Piece turn)
+    public bool checkWinOblique1(Piece turn)
+    {
+
+        //Oblique 1
+        int x = 0, y = 0, t = 0;
+        for (int j = 0; j < 8; j++)
+        {
+            x = j;
+            if (x == 3) y = 1;
+            else if (x == 8) { y = 3; x = 6; t = 2; }
+            else if (x == 4) y = 2;
+            else if (x == 7) { y = 3; x = 6; t = 1; }
+            else if (x == 5 || x == 6) y = 3;
+            else
+            {
+                Debug.Log($"No Diagonal");
+                return false;
+            }
+
+            for (int k = t; k < y; k++)
+            {
+                //Debug.Log($"i={i},j={j},k={k},y={y}");
+                Piece p1 = pieces[x, k];
+                Piece p2 = pieces[x - 1, k + 1];
+                Piece p3 = pieces[x - 2, k + 2];
+                Piece p4 = pieces[x - 3, k + 3];
+                if (p1 == turn
+                    && p2 == turn
+                    && p3 == turn
+                    && p4 == turn)
+                {
+                    return true;
+                }
+                x--;
+            }
+        }
+
+        return false;
+    }
+
+    public bool checkWinOblique2(Piece turn)
+    {
+        int x = 0, k = 0, t = 0, y = 0;
+
+        for (int j = 0; j < 6; j++)
+        {
+            x = j;
+
+            if (x == 3) y = 1;
+            else if (x == 2) y = 2;
+            else if (x == 1) y = 3;
+            else if (x == 0) y = 3;
+            else if (x == 4) { y = 3; x = 0; t = 1; }
+            else if (x == 5) { y = 3; x = 0; t = 2; }
+            else { Debug.Log($"No Diagonal"); return false; }
+
+            for (k = t; k < y; k++)
+            {
+                //Debug.Log($"i={i},j={j},k={k},y={y}");
+                Piece p1 = pieces[x,k];
+                Piece p2 = pieces[x + 1,k + 1];
+                Piece p3 = pieces[x + 2,k + 2];
+                Piece p4 = pieces[x + 3,k + 3];
+                if (p1 == turn
+                    && p2 == turn
+                    && p3 == turn
+                    && p4 == turn)
+                {
+                    return true;
+                }
+                x++;
+            }
+        }
+
+        return false;
+    }
+    //TODO
+    public int calculateScore(Piece turn)
 	{
 		int score = 0;
 		Piece otherTurn = turn;

@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour
 	{
 		//Debug.Log($"i = {i} / j = {j}");
 		Color color = isPlayerTurn ? Color.red : Color.yellow;
-		int k = 0, x = 0, y = 0, t = 0;
+        int k = 0;
 		//Vertical
 		for (k = 0; k < 3; k++)
 		{
