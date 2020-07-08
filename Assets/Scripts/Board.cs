@@ -77,8 +77,9 @@ public class Board
 			if (!won) won = checkWinOblique2(col, a);
 			if (won)
 			{
-				///Debug.Log(turn == Piece.BLUE ? "Blue Won!!!!!!!!!!!!!!!!!!!!" : "Yellow Won!!!!!!!!!!!!!!!");
-			}
+                
+                ///Debug.Log(turn == Piece.BLUE ? "Blue Won!!!!!!!!!!!!!!!!!!!!" : "Yellow Won!!!!!!!!!!!!!!!");
+            }
 
 			draw = checkDraw();
 			if (draw && !won)
@@ -415,10 +416,10 @@ public class Board
 	{
 		int score = 0;
 
-		//check for PPEE || EPPE || EEPP (vertical and horizontal) score += 15
-		//check for PEPE || EPEP (vertical and horizontal) score += 10
-		//check for PEEP (vertical and horizontal) score += 5
-		for (int j = 0; j < 7; j++)
+        //check for PPEE || EPPE || EEPP (vertical and horizontal) score += 15 (score+=6)
+        //check for PEPE || EPEP (vertical and horizontal) score += 10 (score+=4)
+        //check for PEEP (vertical and horizontal) score += 5 (score+=2)
+        for (int j = 0; j < 7; j++)
 		{
 			for (int k = 0; k < 3; k++)
 			{
@@ -431,16 +432,19 @@ public class Board
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == Piece.EMPTY && p3 == turn && p4 == turn)
 				{
-					score += 15;
+                    //score += 15;
+                    score += 6;
 				}
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 10;
+                    //score += 10;
+                    score += 4;
 				}
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 5;
+                    //score += 5;
+                    score += 2;
 				}
 			}
 		}
@@ -459,17 +463,20 @@ public class Board
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == Piece.EMPTY && p3 == turn && p4 == turn)
 				{
-					score += 15;
+                    //score += 15;
+                    score += 6;
 				}
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 10;
-				}
+                    //score += 10;
+                    score += 4;
+                }
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 5;
-				}
+                    //score += 5;
+                    score += 2;
+                }
 			}
 		}
 		score += check_2pieces_Oblique1(turn);
@@ -509,13 +516,15 @@ public class Board
 				if (p1 == turn && p2 == turn && p3 == Piece.EMPTY && p4 == turn
 					|| p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == turn)
 				{
-					score+=30;
-				}
+                    //score+=30;
+                    score += 8;
+                }
 				else if(p1 == turn && p2 == turn && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == turn)
 				{
-					score += 50;
-				}
+                    //score += 50;
+                    score += 10;
+                }
 				x--;
 			}
 		}
@@ -556,18 +565,21 @@ public class Board
 					|| p1 == Piece.EMPTY && p2 == Piece.EMPTY && p3 == turn && p4 == turn
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == Piece.EMPTY)
 				{
-					score += 15;
-				}
+                    //score += 15;
+                    score += 6;
+                }
 				//check for PEPE || EPEP (oblique 1) score += 10
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 ==turn && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 10;
-				}
+                    //score += 10;
+                    score += 4;
+                }
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 5;
-				}
+                    //score += 5;
+                    score += 2;
+                }
 				x--;
 			}
 		}
@@ -605,13 +617,15 @@ public class Board
 				if (p1 == turn && p2 == turn && p3 == Piece.EMPTY && p4 == turn
 					|| p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == turn)
 				{
-					score += 30;
-				}
+                    //score += 30;
+                    score += 8;
+                }
 				else if (p1 == turn && p2 == turn && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == turn)
 				{
-					score += 50;
-				}
+                    //score += 50;
+                    score += 10;
+                }
 				x++;
 			}
 		}
@@ -651,18 +665,21 @@ public class Board
 					|| p1 == Piece.EMPTY && p2 == Piece.EMPTY && p3 == turn && p4 == turn
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == Piece.EMPTY)
 				{
-					score += 15;
-				}
+					//score += 15;
+                    score += 6;
+                }
 				//check for PEPE || EPEP (oblique 1) score += 10
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 10;
-				}
+                    //score += 10;
+                    score += 4;
+                }
 				else if (p1 == turn && p2 == Piece.EMPTY && p3 == Piece.EMPTY && p4 == turn)
 				{
-					score += 5;
-				}
+                    //score += 5;
+                    score += 2;
+                }
 				x++;
 			}
 		}
@@ -690,13 +707,15 @@ public class Board
 				if (p1 == turn && p2 == turn && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == turn)
 				{
-					score += 50;
-				} 
+                    //score += 50;
+                    score += 10;
+                } 
 				else if (p1 == turn && p2 == turn && p3 == Piece.EMPTY && p4 == turn
 					|| p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == turn)
 				{
-					score += 30;
-				}
+                    //score += 30;
+                    score += 8;
+                }
 			}
 		}
 
@@ -713,13 +732,15 @@ public class Board
 				if (p1 == turn && p2 == turn && p3 == turn && p4 == Piece.EMPTY
 					|| p1 == Piece.EMPTY && p2 == turn && p3 == turn && p4 == turn)
 				{
-					score += 50;
-				}
+                    //score += 50;
+                    score += 10;
+                }
 				else if (p1 == turn && p2 == turn && p3 == Piece.EMPTY && p4 == turn
 					|| p1 == turn && p2 == Piece.EMPTY && p3 == turn && p4 == turn)
 				{
-					score += 30;
-				}
+                    //score += 30;
+                    score += 8;
+                }
 			}
 		}
 

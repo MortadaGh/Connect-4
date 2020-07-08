@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,14 @@ namespace Assets.Scripts
 			{
 				List<int> decisions = new List<int>();
 				for(int i=0; i<7; i++){
-					if(root.board.r[i] >= 0){
+                    //GameController.log($"root.board.r[i] = {root.board.r[i]}");
+                    if (root.board.r[i] >= 0){
 						decisions.Add(i);
-					}
+                    }
 				}
+
 				Random r = new Random();
-				int d = r.Next();
+                int d = r.Next();
 				//int d2 = GetHashCode();
 				GameController.log($"decisions.Count = {decisions.Count}");
 				return decisions[d % decisions.Count];

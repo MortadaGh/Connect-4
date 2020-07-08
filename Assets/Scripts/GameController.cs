@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,8 +15,11 @@ public class GameController : MonoBehaviour
 	public GameObject[] c5;
 	public GameObject[] c6;
 	public GameObject[] c7;
-
-	private List<GameObject[]> c;
+    public GameObject Result;
+    public GameObject PlayAgain;
+    
+    
+    private List<GameObject[]> c;
 
 	public bool isPlayerTurn, won, draw;
 
@@ -42,8 +46,21 @@ public class GameController : MonoBehaviour
 
 		currentBoard = new Board(Piece.RED);
 
-		//TODO increase depth depending on Difficulty
-		depth = 0;
+        //TODO increase depth depending on Difficulty
+        switch (GlobalVariables.difficulty)
+        {
+            case GlobalVariables.Difficulty.BEGINNER:
+                depth = 0;
+                break;
+            case GlobalVariables.Difficulty.INTERMEDIATE:
+                depth = 1;
+                break;
+            case GlobalVariables.Difficulty.EXPERT:
+                depth = 2;
+                break;
+        }
+        Debug.Log($"Difficulty = {GlobalVariables.difficulty} / depth = {depth}");
+		//depth = 0;
 
 		//root = new Node(currentBoard.clone(), 0);
 		//ai = new AI(depth, root);
@@ -90,20 +107,26 @@ public class GameController : MonoBehaviour
 
 			if (won)
 			{
-				Debug.Log(isPlayerTurn ? "Red Won!" : "Yellow Won!");
-			}
+                //Debug.Log(isPlayerTurn ? "Red Won!" : "Yellow Won!");
+                if (isPlayerTurn) Result.GetComponent<TextMeshProUGUI> ().text = "You Win";
+                else Result.GetComponent<TextMeshProUGUI>().text = "You Lose";
+                //PlayAgain.GetComponent<TextMeshProUGUI>().text = "Play Again";
+                //PlayAgain.SetActive(true);
+
+            }
 
 			draw = checkDraw();
 			if (draw && !won)
 			{
-				Debug.Log("Draw!");
-			}
+                Result.GetComponent<TextMeshProUGUI>().text = "Draw";
+            }
 
 			isPlayerTurn = !isPlayerTurn;
+            //Debug.Log($"Player turn={isPlayerTurn}");
 
-			if (!isPlayerTurn)
+            if (!isPlayerTurn)
 			{
-				aiMove();
+   				aiMove();
 			}
 		}
 	}
@@ -112,7 +135,7 @@ public class GameController : MonoBehaviour
 	{
 		//Debug.Log($"i = {i} / j = {j}");
 		Color color = isPlayerTurn ? Color.red : Color.yellow;
-		int k = 0, x = 0, y = 0, t = 0;
+        int k = 0;
 		//Vertical
 		for (k = 0; k < 3; k++)
 		{
@@ -130,7 +153,7 @@ public class GameController : MonoBehaviour
 				return true;
 			}
 		}
-
+       
 		//Horizontal
 		for (k = 0; k < 4; k++)
 		{
