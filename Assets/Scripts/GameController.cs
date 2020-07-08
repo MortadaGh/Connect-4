@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
 		currentBoard = new Board(Piece.RED);
 
 		//TODO increase depth depending on Difficulty
-		depth = 2;
+		depth = 0;
 
 		//root = new Node(currentBoard.clone(), 0);
 		//ai = new AI(depth, root);
